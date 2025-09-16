@@ -1,0 +1,146 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #d0d5de; 
+    color: #f5f5f5; 
+}
+
+/* Hero Section */
+.hero {
+    min-height: 500px;
+    background: linear-gradient(135deg, #0071C5, #003d82);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: 29px;
+    color: whitesmoke;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle {
+    font-size: 17px;
+    color: whitesmoke;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Timeline Section */
+.timeline {
+    display: flex; /* horizontal scroll on large screens */
+    gap: 20px;
+    margin: 50px 55px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* LevelUp: scroll snap */
+
+    /* Hide scrollbar */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+}
+
+.timeline::-webkit-scrollbar {
+    display: none; /* hide scrollbar for cleaner look */
+}
+
+.timeline-card {
+    padding: 10px;
+    position: relative;
+    background: #b9d2f7; 
+    border-radius: 5px;
+    flex: 0 0 220px; /* keeps cards consistent size */
+    text-align: center;
+    cursor: pointer;
+    scroll-snap-align: start; /* LevelUp: scroll snap */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* LevelUp: CSS transforms */
+}
+
+/* Hover: lift card and add shadow */
+.timeline-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Year & Milestone */
+.timeline-card .year {
+    font-weight: 600;
+    color: #0071C5;
+    margin: 10px 0;
+}
+
+.timeline-card .milestone {
+    font-weight: 700;
+    color: #010a1a;
+    margin-bottom: 10px;
+}
+
+.timeline-note p {
+    font-size: 16px;
+    color: whitesmoke;
+    margin-top: 10px;
+    text-align: center;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+/* Card Image */
+.card-image {
+    width: 100%;
+    max-height: fit-content;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Card Details: hidden by default, shown on hover */
+.card-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 61, 130, 0.85); /* dark overlay */
+    color: white;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.timeline-card:hover .card-details {
+    opacity: 1;
+}
+
+
+/* Responsive Design*/
+@media (max-width: 600px) {
+    .timeline {
+        flex-direction: column; /* stack vertically on small screens */
+        overflow-x: visible;
+        align-items: center;
+    }
+
+    .timeline-card {
+        width: 80%;
+    }
+}
